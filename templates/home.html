@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<style>
+    .custom-container {
+        background-color: #f8f9fa; /* Set your desired background color */
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .custom-title {
+        font-family: 'Arial', sans-serif; /* Set your desired font family for the title */
+        font-size: 24px; /* Set your desired font size for the title */
+        color: #007bff; /* Set your desired text color */
+    }
+
+    .custom-card {
+        background-color: #ffffff; /* Set your desired background color */
+        border: 1px solid #dee2e6; /* Set your desired border color */
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    }
+
+    .custom-card-body {
+        padding: 20px;
+    }
+
+    .custom-card-title {
+        font-family: 'Helvetica', sans-serif; /* Set your desired font family for the card title */
+        font-size: 20px; /* Set your desired font size for the card title */
+        color: #343a40; /* Set your desired text color for the card title */
+    }
+
+    .custom-card-text {
+        font-family: 'Verdana', sans-serif; /* Set your desired font family for the card text */
+        color: #6c757d; /* Set your desired text color for the card text */
+    }
+</style>
+
+<div class="container mt-4 custom-container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 class="custom-title">Monthly Report</h1>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-3">
+            <div class="card custom-card">
+                <div class="card-body custom-card-body">
+                    <h1 class="card-title custom-card-title">
+                        {{ total_income }} <span class="small custom-card-text"></span>
+                    </h1>
+                    <p class="card-text custom-card-text">
+                        <i class="fa fa-line-chart"></i> Total Income
+                        <br>
+                        <span>&shy;</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add more cards as needed with the same structure -->
+        <div class="col-3">
+            <!-- Another card example -->
+            <div class="card custom-card">
+                <div class="card-body custom-card-body">
+                    <h1 class="card-title custom-card-title">
+                        {{ another_data }} <span class="small custom-card-text">{{total_expenses}}</span>
+                    </h1>
+                    <p class="card-text custom-card-text">
+                        <i class="fa fa-icon"></i> Total Expenditure
+                        <br>
+                        <span>&shy;</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <canvas id="myChart" class="chart"></canvas>
+        </div>
+        <div class="col-md-6">
+            <canvas id="incomeChart" class="chart"></canvas>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/expense_stats_monthly.js' %}"></script>
+<script src="{% static 'js/income_stats_monthly.js' %}"></script>
+
+<style>
+    /* Custom styles for the canvas */
+    .chart {
+        width: 100%;
+        height: auto;
+        border: 1px solid #ddd; /* Add a border for visual separation */
+        border-radius: 4px;
+    }
+</style>
+
+{% endblock %}
